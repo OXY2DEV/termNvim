@@ -4,6 +4,7 @@
 <p style="text-align: center;font-size: 0.5rem;">Created on Mobile, Created for Mobile</p>
 
 > ⚙️ About
+> 
 > A customised **Neovim** setup for **Termux**
 
 ## Introduction
