@@ -1,77 +1,85 @@
-<img style="display: grid;width: 200px; justify-content: center;" src="./docs/assets/termNvim.png"/>
+<img src="./TNVIM.png" alt="hi" />
 
-<h1 style="text-align: center;"><span style="font-weight: 100">Term</span><span style="font-weight: 600">Nvim</span></h1>
-<p style="text-align: center;">
-<I style="font-size: 0.75rem; font-weight: 200">"Made on mobile, for mobile"</i></p>
+<p style="text-align: center; font-size: 1.5rem">Term<b>Nvim</b></p>
+<p style="text-align: center;font-size: 0.5rem;">Created on Mobile, Created for Mobile</p>
 
-<p style="text-align: center">Highly Customised <span style="font-weight: 100">Neo</span><span style="font-weight: 700">Vim</span> setup to be used inside <i style="font-weight: 700">Termux</i> for Web Development</p>
+> ⚙️ About
+> A customised **Neovim** setup for **Termux**
 
-# Features
-- ⌨️ Sensible keymaps that are mobile-friendly.
-- 🌪️ Animated statusline with a bunch of pre-configured ones and guides on how to make your own.
-- 🏝️ Custom start-up screen with recent files history and helper functions for making your own ones.
-- 🔭 Telescope with a few useful plugins for making browsing an ease.
-- 🌐 LSP setup for `web development` with multiple completion sources and completion menu setup.
-- 📦 UI improvements to make usage much easier.
-- 🌀 Smooth scroll
-And much more!
+## Introduction
+> 🧱 The problem
+> 
+> Most of the **Neovim** distros currently available are catered for PCs with **Horizontal** displays. However, due to this the experience of using them in **Termux** is less then ideal.
 
-# Setup
-If you had a previous `Neovim` configuration you must run these commands first
+As such I created this, I wanted a configuration that was easy to understand and maintain, was plug-and-play and taught new users how to create their own **configurations**.
 
+> 🎯 The target 
+> 
+> This is meant for people who want to learn **programming** or **Neovim** in general, but don't have access to a computer.
+
+While apps like **Spck**, **Acode** and others exist. I found that most of them don't provide a *complete* development environment and tend to take up a lot of spaces too. 
+They also don't provide that much of customisation which was why I picked **Neovim** in the first place.
+
+> ❌ What this isn't
+
+This is *NOT* meant to be a replacement for any of the current distros. I saw that most of the distros available usually take around an **Hour** just to understand how to set them up. And still you may not be able to customise it to your own preferences.
+
+It is also *NOT* meant to be the best setup for **Neovim** on **Termux**. I am not an expert in **Neovim**, however I have went through the learning process and want to make the process as smooth as possible for others.
+
+> ⚠️ Alpha stage
+> 
+> I am fairly new to **Neovim** myself. As such this project is in it's **Alpha** stage. You may find bugs here and there, but it should be more than stable enough to be used as a daily driver. Also expect massive **changes** in the future.
+
+> 🧭 Previous part
+> 
+> You should definitely first check my `termux` repo to learn the basics of using the terminal and how to set everything up.
+
+## Installation
+### Requirements
+1. Ensure `neovim` is installed. You can check it with this command 
+```bash
+nvim --version
 ```
-rm -rf ~/.local/share/nvim
-rm -rf ~/.local/state/nvim
+> If it's not installed you can run the following command to install it
+
+```bash
+pkg install neovim
+```
+2. You may want to install the `nodejs` client for `neovim`. You can do this with the following command if you haven't already.
+```bash
+pkg install nodejs-lts
+```
+3. Others
+
+### On a fresh `Termux` installation
+You should follow these instructions if you have just installed `Termux`.
+1. Update & upgrade old packages so that you don't get errors when running things.
+```bash
+pkg upgrade && pkg update
+```
+2. Install `neovim` & `git`.
+```shell
+pkg install neovim git
+```
+3. Clone this repository into the `~/.config/nvim/` folder/directory.
+```bash
+git clone https://www.github.com/OXY2DEV/termNvim ~/.config/nvim/
 ```
 
-Run the following commands
-
+> 🧭 Optional 
+> 
+> You should also setup `termux-storage` if you want to access your phones internal storage.
+### With a previous Neovim configuration
+If you already have experience in `Neovim` follow these steps instead.
+1. First let's back up your old files so you can restore your old configuration anytime you want.
+```bash
+mv ~/.config/nvim ~/.config/nvim.backup
 ```
-cd ~/.config && ls
-mv nvim nvim.bak
-mkdir nvim && cd nvim
-git clone https://www.github.com/OXY2DEV/nvim
+2. Now, we should get rid of the old files stored in the `~/.local/share/nvim/` & `~/.local/state/nvim/` directory to prevent any errors from occuring during the setup.
+```bash
+rm -rf ~/.local/share/nvim && rm -rf ~/.local/state/nvim
 ```
-<p style="font-size: 0.4rem;">You can also just run the entire thing as a single command.</p>
-
-Afterwards, run `Neovim` like normal. You may need to do `:UpdateRemotePlugins` inside `Neovim` to get `Treesitter` working.
-
-# Getting started
-There are a few `keymaps` you have to familiarise for using this.
-
-All of this `keymaps` are for `normal` mode as it makes the most sense on a smartphone 📱
-- `Space w` saves the file you are editing.
-- `Space q` quits `nvim`.
-- `Space wq` saves and quit.
-- `Space qq` quit and don't save.
-
-- `Space f` opens `Telescope file_browser`.
-- `Space u` opens an `undo` history.
-- `Space .` goes to the next tab.
-- `Space ,` goes to the previous tab.
-
-<p style="font-size: 0.4rem"><b>space</b> is the leader key. You can change it by changing <b>vim.g.mapleader</b></p>
-
-Touch controls also work so you can use them too.
-
-If you forget about them you can just press `space` and wait for a bit. `Which-key` should pop-up and show you all the keymaps.
-
-# File structure
-The file structure is as follows
+3. Now we clone the repo.
+```bash
+git clone https://www.github.com/OXY2DEV/termNvim ~/.config/nvim/
 ```
-nvim
-╰─ init.lua
-   ├─ settings.lua
-   ├─ keymaps.lua
-   ╰─ plugins.lua
-      ╰─ plugin_name.lua
-```
-
-This is done so that all the settings and keymaps still work even if you mess up the plugins setup(trust me it's a very common thing).
-
-All the plugins are in `plugins.lua` while their configuration files are inside the `plugins` folder.
-
-# Help
-For any `file_name.lua` there is a `file_name.md` inside the `docs` to help you out if you are stuck.
-
-If that doesn't help you can open an issue here(you must provide sufficient information about the issue or I can't fix them).
